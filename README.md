@@ -2,55 +2,52 @@
 
 **Advertising × Freelance Collaboration Platform**
 
-A modern, animated frontend inspired by the aesthetic of cool.co — adapted for an advertising company that partners with freelance platforms.
+Modern animated frontend inspired by cool.co aesthetics — for an advertising company that partners with freelance platforms.
 
 ## Concept
 
-- You are an **advertising company** (Cool Media Remote Workspace), not a pure freelance marketplace.
-- You collaborate with freelance partners through platforms such as **Micro1**, **Mecocagen**, and **Outliner**.
-- Freelancers must **sign up to Micro1** (primary payout partner).
-- They pay a **one-time $100 enrollment fee** to receive a digital **Membership Card / Badge** attached to their profile.
-- Once enrolled they can see:
-  - **Available** projects
-  - **Pending** projects
-  - **Completed** projects
+- **Cool Media Remote Workspace** is an advertising company (not a pure freelance marketplace).
+- Partners: **Micro1** (primary payout), **Mecor**, **Outliner**.
+- Freelancers must register on Micro1: https://www.talent.micro1.ai/register
+- **Enrollment: USD 206** (one-time) covers:
+  - Membership badge & verified profile
+  - One-on-one tutor (platform navigation + workflow)
+  - Premium tools access
+  - Weekly Zoom meetings
+  - Workflow training across collaborative platforms
+  - Weekly development updates
+- Application flow: copy professional message → open **Customer Care** (Smartsupp live chat) → paste & send
+- Dashboard: Available / Pending / Completed projects
 
 ## Pages
 
 | File | Description |
 |------|-------------|
-| `index.html` | Landing page with hero, particles, features, how-it-works, membership preview, partners |
-| `dashboard.html` | Project dashboard (Available / Pending / Completed tabs) |
-| `membership.html` | $100 enrollment + membership card preview |
-| `signup.html` | Account creation (leads to membership) |
-| `login.html` | Authentication |
+| `index.html` | Landing — hero, particles, orbs, features, partners |
+| `membership.html` | USD 206 package, benefits, application message + copy, chat CTA |
+| `dashboard.html` | Project tabs |
+| `signup.html` / `login.html` | Auth demos |
 
-## Design & Animations
+## Customer Care Chat
 
-- Dark theme with orange → teal gradient accents
-- Canvas particle background
-- Scroll-triggered reveals
-- Hover elevations & glow effects
-- Animated membership card
-- Smooth tab switching on dashboard
-- Responsive layout
+**Smartsupp** live chat is installed site-wide with key  
+`9b1950efa201891f8fa562d1e968ddcc2f2cd982`.
 
-## How to run
+The floating Smartsupp widget appears bottom-right on every page.  
+On the Membership page, “Open Customer Care Chat” calls `smartsupp('chat:open')`.
 
-Simply open `index.html` in a modern browser, or serve the folder with any static server:
+## Run
+
+Open `index.html` or:
 
 ```bash
 npx serve .
-# or
-python -m http.server 8080
 ```
 
 ## Tech
 
-- Pure HTML / CSS / Vanilla JS
-- Google Fonts (Inter + Space Grotesk)
-- No build step required
+HTML / CSS / Vanilla JS · Google Fonts · Canvas particles · Ambient orbs · Scroll reveals · Smartsupp
 
 ---
 
-© 2025 Cool Media Remote Workspace — Demo frontend for advertising + freelance partner model.
+© 2025 Cool Media Remote Workspace
