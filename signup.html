@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join — Cool Media Remote Workspace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <canvas id="particle-canvas"></canvas>
+
+  <div class="auth-page">
+    <div class="auth-card">
+      <a href="index.html" class="logo" style="justify-content:center;margin-bottom:28px;">
+        <span class="brand">Cool Media</span>
+        <span class="suffix">Remote Workspace</span>
+      </a>
+
+      <h1>Create your account</h1>
+      <p class="sub">Join as a freelance partner. You will need a Micro1 account to receive payments.</p>
+
+      <div class="micro1-note">
+        <span style="font-size:1.2rem;">🔗</span>
+        <div>
+          <strong>Important:</strong> After signup you must connect (or create) a Micro1 account. That is the only channel we use for partner payouts.
+        </div>
+      </div>
+
+      <form id="signup-form" class="auth-form">
+        <div class="form-group">
+          <label for="name">Full name</label>
+          <input type="text" id="name" placeholder="Alex Rivera" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email" placeholder="you@example.com" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Min. 8 characters" required minlength="8" />
+        </div>
+        <div class="form-group">
+          <label for="role">Primary skill</label>
+          <input type="text" id="role" placeholder="e.g. Creative Designer, Media Buyer, Copywriter" />
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%;padding:14px;margin-top:8px;">
+          Create Account →
+        </button>
+      </form>
+
+      <div class="auth-divider">or</div>
+
+      <p style="text-align:center;font-size:0.9rem;color:var(--text-secondary);">
+        Already have an account? <a href="login.html" style="color:var(--accent-orange);font-weight:500;">Log in</a>
+      </p>
+
+      <p style="text-align:center;margin-top:24px;font-size:0.8rem;color:var(--text-muted);">
+        Next step: $100 membership enrollment to unlock your badge and projects.
+      </p>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

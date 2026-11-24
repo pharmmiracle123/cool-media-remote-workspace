@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — Cool Media Remote Workspace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <canvas id="particle-canvas"></canvas>
+
+  <nav class="navbar scrolled">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">
+        <span class="brand">Cool Media</span>
+        <span class="suffix">Remote Workspace</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="membership.html">Membership</a>
+        <a href="dashboard.html" class="active">Dashboard</a>
+        <a href="login.html" class="btn btn-ghost btn-sm">Log out</a>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="dashboard-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-user">
+        <div class="avatar">AR</div>
+        <div class="user-info">
+          <h4>Alex Rivera</h4>
+          <span>Verified Member</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#" class="active"><span class="icon">📋</span> Projects</a>
+        <a href="membership.html"><span class="icon">💳</span> Membership Card</a>
+        <a href="#"><span class="icon">💰</span> Payouts (Micro1)</a>
+        <a href="#"><span class="icon">⚙️</span> Settings</a>
+        <a href="index.html"><span class="icon">🏠</span> Back to Home</a>
+      </nav>
+
+      <div style="margin-top:40px;padding:16px;background:rgba(0,212,200,0.06);border-radius:12px;border:1px solid rgba(0,212,200,0.15);">
+        <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:6px;">PAYOUT PARTNER</div>
+        <div style="font-weight:600;color:var(--accent-teal);">Micro1</div>
+        <div style="font-size:0.8rem;color:var(--text-secondary);margin-top:4px;">Connected · Ready</div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main-content">
+      <h1 class="page-title">Your Projects</h1>
+      <p class="page-sub">Available opportunities from Cool Media Remote Workspace advertising campaigns. Complete work and get paid via Micro1.</p>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="available">Available <span class="count">6</span></button>
+        <button class="tab" data-tab="pending">Pending <span class="count">2</span></button>
+        <button class="tab" data-tab="completed">Completed <span class="count">11</span></button>
+      </div>
+
+      <!-- Available -->
+      <div class="projects-grid stagger visible" data-panel="available">
+        <article class="project-card">
+          <span class="status available">Available</span>
+          <h3>Dynamic Banner Set — CTV Launch</h3>
+          <div class="meta">
+            <span>🎨 Creative</span>
+            <span>Due in 5 days</span>
+          </div>
+          <p>Design 12 responsive banner variations for a major CTV campaign. Brand guidelines and assets provided.</p>
+          <div class="footer">
+            <span class="project-budget">$1,850</span>
+            <button class="btn btn-primary btn-sm">Apply</button>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <span class="status available">Available</span>
+          <h3>Social Ad Copy & Hook Testing</h3>
+          <div class="meta">
+            <span>✍️ Copywriting</span>
+            <span>Due in 3 days</span>
+          </div>
+          <p>Write and iterate 20 short-form ad hooks for Meta & TikTok. Performance data will be shared after first flight.</p>
+          <div class="footer">
+            <span class="project-budget">$920</span>
+            <button class="btn btn-primary btn-sm">Apply</button>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <span class="status available">Available</span>
+          <h3>Landing Page Optimization Audit</h3>
+          <div class="meta">
+            <span>📊 Strategy</span>
+            <span>Due in 7 days</span>
+          </div>
+          <p>Full CRO audit of three product landing pages. Recommendations must include prioritised experiment backlog.</p>
+          <div class="footer">
+            <span class="project-budget">$2,400</span>
+            <button class="btn btn-primary btn-sm">Apply</button>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <span class="status available">Available</span>
+          <h3>Video Storyboard — Brand Film</h3>
+          <div class="meta">
+            <span>🎬 Motion</span>
+            <span>Due in 10 days</span>
+          </div>
+          <p>Create a detailed 60-second brand film storyboard with shot list and music direction notes.</p>
+          <div class="footer">
+            <span class="project-budget">$1,600</span>
+            <button class="btn btn-primary btn-sm">Apply</button>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <span class="status available">Available</span>
+          <h3>Audience Persona Research Pack</h3>
+          <div class="meta">
+            <span>🔍 Research</span>
+            <span>Due in 6 days</span>
+          </div>
+          <p>Build 4 detailed buyer personas for a B2B SaaS client based on first-party data and interviews.</p>
+          <div class="footer">
+            <span class="project-budget">$1,350</span>
+            <button class="btn btn-primary btn-sm">Apply</button>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <span class="status available">Available</span>
+          <h3>Email Sequence — Product Launch</h3>
+          <div class="meta">
+            <span>✉️ Lifecycle</span>
+            <span>Due in 4 days</span>
+          </div>
+          <p>Write a 7-email launch sequence including subject lines, preview text, and A/B variants.</p>
+          <div class="footer">
+            <span class="project-budget">$780</span>
+            <button class="btn btn-primary btn-sm">Apply</button>
+          </div>
+        </article>
+      </div>
+
+      <!-- Pending -->
+      <div class="projects-grid" data-panel="pending" style="display:none;">
+        <article class="project-card">
+          <span class="status pending">Pending Review</span>
+          <h3>Meta Creative Refresh — Q4</h3>
+          <div class="meta">
+            <span>🎨 Creative</span>
+            <span>Submitted 2 days ago</span>
+          </div>
+          <p>You delivered 8 new static + 4 motion concepts. Awaiting client feedback from the Cool Media team.</p>
+          <div class="footer">
+            <span class="project-budget">$2,100</span>
+            <button class="btn btn-ghost btn-sm">View Status</button>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <span class="status pending">In Progress</span>
+          <h3>Performance Report Template</h3>
+          <div class="meta">
+            <span>📈 Analytics</span>
+            <span>Due tomorrow</span>
+          </div>
+          <p>Building an automated weekly reporting template in Looker Studio for three active campaigns.</p>
+          <div class="footer">
+            <span class="project-budget">$1,450</span>
+            <button class="btn btn-ghost btn-sm">Continue</button>
+          </div>
+        </article>
+      </div>
+
+      <!-- Completed -->
+      <div class="projects-grid" data-panel="completed" style="display:none;">
+        <article class="project-card">
+          <span class="status completed">Completed</span>
+          <h3>Brand Guidelines Update</h3>
+          <div class="meta">
+            <span>🎨 Creative</span>
+            <span>Paid via Micro1</span>
+          </div>
+          <p>Updated visual system and messaging framework for a multi-location franchise client.</p>
+          <div class="footer">
+            <span class="project-budget">$3,200 ✓</span>
+            <button class="btn btn-ghost btn-sm">View Details</button>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <span class="status completed">Completed</span>
+          <h3>Search Campaign Structure</h3>
+          <div class="meta">
+            <span>🔍 Media</span>
+            <span>Paid via Micro1</span>
+          </div>
+          <p>Rebuilt Google Ads account architecture with 14 campaigns and full keyword taxonomy.</p>
+          <div class="footer">
+            <span class="project-budget">$1,900 ✓</span>
+            <button class="btn btn-ghost btn-sm">View Details</button>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <span class="status completed">Completed</span>
+          <h3>UGC Brief & Creator Outreach</h3>
+          <div class="meta">
+            <span>🤝 Influencer</span>
+            <span>Paid via Micro1</span>
+          </div>
+          <p>Created creator brief and shortlisted 25 micro-influencers for a product seeding campaign.</p>
+          <div class="footer">
+            <span class="project-budget">$1,100 ✓</span>
+            <button class="btn btn-ghost btn-sm">View Details</button>
+          </div>
+        </article>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
