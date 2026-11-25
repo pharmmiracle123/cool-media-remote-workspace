@@ -1856,3 +1856,123 @@ ul { list-style: none; }
   align-items: center;
   gap: 10px;
 }
+
+
+/* ========== BRAND BANNER HEADER (shared by every page) ========== */
+.brand-banner {
+  position: relative;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  background: #080608;
+  line-height: 0;
+  z-index: 100;
+}
+.brand-banner > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 120px;
+  object-fit: cover;
+  object-position: center;
+}
+/* compact on desktop for app pages so the banner doesn't swallow the screen */
+@media (min-width: 769px) {
+  .brand-banner.compact > img { max-height: 240px; }
+}
+.brand-banner .navbar {
+  position: absolute !important;
+  top: 0; right: 0;
+  width: 100%; height: 100%;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  z-index: 200;
+  pointer-events: none;
+}
+.brand-banner .nav-inner {
+  position: absolute;
+  top: 0; right: 0;
+  width: 100%; height: 100%;
+  min-height: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 15px 20px;
+  pointer-events: none;
+}
+.brand-banner .navbar .logo { display: none !important; }
+.brand-banner .nav-toggle {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 46px; height: 46px;
+  padding: 10px;
+  margin-left: 0;
+  background: rgba(0,0,0,0.65);
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 10px;
+  cursor: pointer;
+  pointer-events: auto;
+  position: relative;
+  z-index: 300;
+  backdrop-filter: blur(10px);
+}
+.brand-banner .nav-toggle span {
+  display: block;
+  width: 23px; height: 2px;
+  background: #fff !important;
+  border-radius: 5px;
+}
+.brand-banner .nav-links {
+  display: none !important;
+  position: absolute;
+  top: 65px; right: 20px; left: auto;
+  width: 230px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  padding: 12px;
+  background: rgba(12,10,12,0.97);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 14px;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.5);
+  backdrop-filter: blur(18px);
+  pointer-events: auto;
+  z-index: 250;
+  line-height: normal;
+}
+.brand-banner .nav-links.open { display: flex !important; }
+.brand-banner .nav-links a {
+  display: block;
+  width: 100%;
+  padding: 13px 12px;
+  color: #fff !important;
+  font-size: 14px;
+  border-radius: 7px;
+}
+.brand-banner .nav-links a:hover,
+.brand-banner .nav-links a.active { background: rgba(255,255,255,0.1); }
+.brand-banner .nav-links a::after { display: none; }
+.brand-banner .nav-links .btn { justify-content: center; margin-top: 5px; }
+@media (max-width: 768px) {
+  .brand-banner > img { min-height: 0; }
+  .brand-banner .nav-inner { padding: 10px 12px; }
+  .brand-banner .nav-toggle { width: 40px; height: 40px; }
+  .brand-banner .nav-links,
+  .brand-banner .nav-links.open {
+    top: 55px; right: 12px;
+    width: min(230px, calc(100vw - 24px));
+  }
+}
+/* pages with the banner: auth card sits below it, sidebar sticks to top */
+.brand-banner + .auth-page { min-height: auto; padding: 48px 20px 64px; }
+.brand-banner ~ .dashboard-layout { min-height: 60vh; }
+.brand-banner ~ .dashboard-layout .sidebar { top: 0; height: 100vh; }
+@media (max-width: 900px) {
+  .brand-banner ~ .dashboard-layout .sidebar { height: auto; }
+}
