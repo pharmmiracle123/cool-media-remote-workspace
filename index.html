@@ -1,402 +1,765 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Cool Media Remote Workspace — Collaborate. Create. Earn.</title>
-  <meta name="description" content="Cool Media is an advertising company that partners with top freelance platforms. Join, get your membership badge, access high-quality projects, and get paid via Micro1." />
+
+  <meta name="description" content="Cool Media Remote Workspace — Collaborate, create and earn." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
   <link rel="stylesheet" href="css/styles.css" />
+
+  <style>
+    /* FULL WIDTH HEADER IMAGE */
+    .brand-banner {
+      position: relative;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      overflow: visible;
+      background: #080608;
+      line-height: 0;
+      z-index: 100;
+    }
+
+    .brand-banner > img {
+      display: block;
+      width: 100%;
+      height: auto;
+      min-height: 120px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* DROPDOWN ICON ON TOP OF IMAGE */
+    .navbar {
+      position: absolute !important;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent !important;
+      border: none !important;
+      backdrop-filter: none !important;
+      z-index: 200;
+      pointer-events: none;
+    }
+
+    .nav-inner {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+      padding: 15px 20px;
+      pointer-events: none;
+    }
+
+    .navbar .logo {
+      display: none !important;
+    }
+
+    /* Always show dropdown icon */
+    .nav-toggle {
+      display: flex !important;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 46px;
+      height: 46px;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.65);
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 10px;
+      cursor: pointer;
+      pointer-events: auto;
+      position: relative;
+      z-index: 300;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 23px;
+      height: 2px;
+      background: #ffffff !important;
+      border-radius: 5px;
+    }
+
+    /* DROPDOWN MENU */
+    .nav-links {
+      display: none !important;
+      position: absolute;
+      top: 65px;
+      right: 20px;
+      width: 230px;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 12px;
+      background: rgba(12, 10, 12, 0.97);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 14px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.5);
+      backdrop-filter: blur(18px);
+      pointer-events: auto;
+      z-index: 250;
+      line-height: normal;
+    }
+
+    .nav-links.open {
+      display: flex !important;
+      position: absolute;
+      top: 65px;
+      right: 20px;
+      left: auto;
+      width: 230px;
+      padding: 12px;
+      gap: 0;
+    }
+
+    .nav-links a {
+      display: block;
+      width: 100%;
+      padding: 13px 12px;
+      color: #ffffff !important;
+      font-size: 14px;
+      border-radius: 7px;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .nav-links a::after {
+      display: none;
+    }
+
+    .nav-links .btn {
+      justify-content: center;
+      margin-top: 5px;
+    }
+
+    /* REMOVE OLD TOP BAR */
+    .top-bar {
+      display: none !important;
+    }
+
+    /* MOBILE IMAGE */
+    @media (max-width: 768px) {
+      .brand-banner > img {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+      }
+
+      .nav-inner {
+        padding: 10px 12px;
+      }
+
+      .nav-toggle {
+        width: 40px;
+        height: 40px;
+      }
+
+      .nav-links,
+      .nav-links.open {
+        top: 55px;
+        right: 12px;
+        width: min(230px, calc(100vw - 24px));
+      }
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
 </head>
+
 <body>
+
   <canvas id="particle-canvas"></canvas>
+
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
   <div class="orb orb-3"></div>
 
-  <!-- Top announcement bar -->
-  <div class="top-bar">
-    <div class="container">
-      <span>Partnered with Micro1 · Mecor · Outliner</span>
-      <a href="membership.html" class="play-link">Get your Membership Badge →</a>
-    </div>
-  </div>
+  <!-- FULL WIDTH BRAND IMAGE WITH DROPDOWN -->
+  <header class="brand-banner">
 
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="container nav-inner">
-      <a href="index.html" class="logo">
-        <span class="brand">Cool Media</span>
-        <span class="suffix">Remote Workspace</span>
-      </a>
+    <img
+      src="assets/logo-header.png"
+      alt="Cool Media Remote Workspace"
+    />
 
-      <div class="nav-links">
-        <a href="#how-it-works">How it works</a>
-        <a href="#projects">Projects</a>
-        <a href="membership.html">Membership</a>
-        <a href="#partners">Partners</a>
-        <a href="login.html" class="btn btn-ghost btn-sm">Log in</a>
-        <a href="signup.html" class="btn btn-primary btn-sm">Join</a>
+    <nav class="navbar">
+
+      <div class="nav-inner">
+
+        <div class="nav-links">
+
+          <a href="#how-it-works">How it works</a>
+
+          <a href="#projects">Projects</a>
+
+          <a href="membership.html">Membership</a>
+
+          <a href="#partners">Partners</a>
+
+          <a href="login.html" class="btn btn-ghost btn-sm">
+            Log in
+          </a>
+
+          <a href="signup.html" class="btn btn-primary btn-sm">
+            Join
+          </a>
+
+        </div>
+
+        <button
+          class="nav-toggle"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          type="button"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
       </div>
 
-      <button class="nav-toggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
+    </nav>
 
-  <!-- Hero -->
+  </header>
+
+  <!-- HERO -->
   <section class="hero">
+
     <div class="container">
+
       <div class="hero-content">
+
         <div class="hero-eyebrow">
           <span class="dot"></span>
           Advertising × Freelance Collaboration
         </div>
+
         <h1>
           Create campaigns.<br />
           <span class="gradient-text">Earn with freelancers.</span>
         </h1>
+
         <p class="hero-sub">
           We are an advertising company expanding through trusted freelance partners.
-          Sign up via Micro1, unlock your membership badge for USD 206, and access exclusive projects — available, pending, and completed — all in one place.
+          Sign up via Micro1, unlock your membership badge for USD 206, and access
+          exclusive projects — available, pending, and completed — all in one place.
         </p>
+
         <div class="hero-cta">
-          <a href="https://www.talent.micro1.ai/register" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Start Free → Join Micro1</a>
-          <a href="membership.html" class="btn btn-outline btn-lg">View Membership Card</a>
+
+          <a
+            href="https://www.talent.micro1.ai/register"
+            target="_blank"
+            rel="noopener"
+            class="btn btn-primary btn-lg"
+          >
+            Start Free → Join Micro1
+          </a>
+
+          <a href="membership.html" class="btn btn-outline btn-lg">
+            View Membership Card
+          </a>
+
         </div>
 
         <div class="hero-stats">
+
           <div class="stat-item">
             <div class="stat-value" data-count="2400" data-suffix="+">0</div>
             <div class="stat-label">Active freelancers</div>
           </div>
+
           <div class="stat-item">
             <div class="stat-value" data-count="860" data-suffix="+">0</div>
             <div class="stat-label">Projects completed</div>
           </div>
+
           <div class="stat-item">
             <div class="stat-value">USD 206</div>
             <div class="stat-label">Membership enrollment</div>
           </div>
+
         </div>
+
       </div>
+
     </div>
+
   </section>
 
-  <!-- Trusted partners -->
+  <!-- TRUSTED PARTNERS -->
   <section class="trusted">
+
     <div class="container">
+
       <p class="trusted-label">Payout & collaboration partners</p>
+
       <div class="logo-marquee">
+
         <div class="logo-track">
-<span class="partner-logo-item" title="Micro1">
-  <svg class="partner-svg" viewBox="0 0 120 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect x="0" y="4" width="24" height="24" rx="6" fill="url(#m1g_1)"/>
-    <text x="12" y="21" text-anchor="middle" fill="#fff" font-family="Inter,system-ui,sans-serif" font-size="11" font-weight="700">m1</text>
-    <text x="32" y="21" fill="currentColor" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="600" letter-spacing="-0.02em">micro1</text>
-    <defs><linearGradient id="m1g_1" x1="0" y1="0" x2="24" y2="24"><stop stop-color="#3444DA"/><stop offset="1" stop-color="#6B7CFF"/></linearGradient></defs>
-  </svg>
-</span><span class="partner-logo-item" title="Mecor">
-  <svg class="partner-svg" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M4 26V6h4.2l5.4 12.2L19 6H23v20h-3.6V12.4L14.2 24h-2.4L6.6 12.4V26H4z" fill="url(#mcg_2)"/>
-    <text x="30" y="21" fill="currentColor" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="600" letter-spacing="0.04em">MECOR</text>
-    <defs><linearGradient id="mcg_2" x1="4" y1="6" x2="23" y2="26"><stop stop-color="#4F46E5"/><stop offset="1" stop-color="#A78BFA"/></linearGradient></defs>
-  </svg>
-</span><span class="partner-logo-item" title="Outliner">
-  <svg class="partner-svg" viewBox="0 0 130 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect x="1" y="5" width="22" height="22" rx="5" stroke="url(#olg_3)" stroke-width="2" fill="none"/>
-    <path d="M7 16h10M12 11v10" stroke="url(#olg_3)" stroke-width="2" stroke-linecap="round"/>
-    <text x="30" y="21" fill="currentColor" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="600" letter-spacing="-0.01em">Outliner</text>
-    <defs><linearGradient id="olg_3" x1="1" y1="5" x2="23" y2="27"><stop stop-color="#00D4C8"/><stop offset="1" stop-color="#5EEAD4"/></linearGradient></defs>
-  </svg>
-</span><span class="partner-logo-item" title="Micro1">
-  <svg class="partner-svg" viewBox="0 0 120 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect x="0" y="4" width="24" height="24" rx="6" fill="url(#m1g_4)"/>
-    <text x="12" y="21" text-anchor="middle" fill="#fff" font-family="Inter,system-ui,sans-serif" font-size="11" font-weight="700">m1</text>
-    <text x="32" y="21" fill="currentColor" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="600" letter-spacing="-0.02em">micro1</text>
-    <defs><linearGradient id="m1g_4" x1="0" y1="0" x2="24" y2="24"><stop stop-color="#3444DA"/><stop offset="1" stop-color="#6B7CFF"/></linearGradient></defs>
-  </svg>
-</span><span class="partner-logo-item" title="Mecor">
-  <svg class="partner-svg" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M4 26V6h4.2l5.4 12.2L19 6H23v20h-3.6V12.4L14.2 24h-2.4L6.6 12.4V26H4z" fill="url(#mcg_5)"/>
-    <text x="30" y="21" fill="currentColor" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="600" letter-spacing="0.04em">MECOR</text>
-    <defs><linearGradient id="mcg_5" x1="4" y1="6" x2="23" y2="26"><stop stop-color="#4F46E5"/><stop offset="1" stop-color="#A78BFA"/></linearGradient></defs>
-  </svg>
-</span><span class="partner-logo-item" title="Outliner">
-  <svg class="partner-svg" viewBox="0 0 130 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect x="1" y="5" width="22" height="22" rx="5" stroke="url(#olg_6)" stroke-width="2" fill="none"/>
-    <path d="M7 16h10M12 11v10" stroke="url(#olg_6)" stroke-width="2" stroke-linecap="round"/>
-    <text x="30" y="21" fill="currentColor" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="600" letter-spacing="-0.01em">Outliner</text>
-    <defs><linearGradient id="olg_6" x1="1" y1="5" x2="23" y2="27"><stop stop-color="#00D4C8"/><stop offset="1" stop-color="#5EEAD4"/></linearGradient></defs>
-  </svg>
-</span><span class="partner-logo-item" title="Micro1">
-  <svg class="partner-svg" viewBox="0 0 120 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect x="0" y="4" width="24" height="24" rx="6" fill="url(#m1g_7)"/>
-    <text x="12" y="21" text-anchor="middle" fill="#fff" font-family="Inter,system-ui,sans-serif" font-size="11" font-weight="700">m1</text>
-    <text x="32" y="21" fill="currentColor" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="600" letter-spacing="-0.02em">micro1</text>
-    <defs><linearGradient id="m1g_7" x1="0" y1="0" x2="24" y2="24"><stop stop-color="#3444DA"/><stop offset="1" stop-color="#6B7CFF"/></linearGradient></defs>
-  </svg>
-</span><span class="partner-logo-item" title="Mecor">
-  <svg class="partner-svg" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M4 26V6h4.2l5.4 12.2L19 6H23v20h-3.6V12.4L14.2 24h-2.4L6.6 12.4V26H4z" fill="url(#mcg_8)"/>
-    <text x="30" y="21" fill="currentColor" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="600" letter-spacing="0.04em">MECOR</text>
-    <defs><linearGradient id="mcg_8" x1="4" y1="6" x2="23" y2="26"><stop stop-color="#4F46E5"/><stop offset="1" stop-color="#A78BFA"/></linearGradient></defs>
-  </svg>
-</span><span class="partner-logo-item" title="Outliner">
-  <svg class="partner-svg" viewBox="0 0 130 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect x="1" y="5" width="22" height="22" rx="5" stroke="url(#olg_9)" stroke-width="2" fill="none"/>
-    <path d="M7 16h10M12 11v10" stroke="url(#olg_9)" stroke-width="2" stroke-linecap="round"/>
-    <text x="30" y="21" fill="currentColor" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="600" letter-spacing="-0.01em">Outliner</text>
-    <defs><linearGradient id="olg_9" x1="1" y1="5" x2="23" y2="27"><stop stop-color="#00D4C8"/><stop offset="1" stop-color="#5EEAD4"/></linearGradient></defs>
-  </svg>
-</span><span class="partner-logo-item" title="Micro1">
-  <svg class="partner-svg" viewBox="0 0 120 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect x="0" y="4" width="24" height="24" rx="6" fill="url(#m1g_10)"/>
-    <text x="12" y="21" text-anchor="middle" fill="#fff" font-family="Inter,system-ui,sans-serif" font-size="11" font-weight="700">m1</text>
-    <text x="32" y="21" fill="currentColor" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="600" letter-spacing="-0.02em">micro1</text>
-    <defs><linearGradient id="m1g_10" x1="0" y1="0" x2="24" y2="24"><stop stop-color="#3444DA"/><stop offset="1" stop-color="#6B7CFF"/></linearGradient></defs>
-  </svg>
-</span><span class="partner-logo-item" title="Mecor">
-  <svg class="partner-svg" viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path d="M4 26V6h4.2l5.4 12.2L19 6H23v20h-3.6V12.4L14.2 24h-2.4L6.6 12.4V26H4z" fill="url(#mcg_11)"/>
-    <text x="30" y="21" fill="currentColor" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="600" letter-spacing="0.04em">MECOR</text>
-    <defs><linearGradient id="mcg_11" x1="4" y1="6" x2="23" y2="26"><stop stop-color="#4F46E5"/><stop offset="1" stop-color="#A78BFA"/></linearGradient></defs>
-  </svg>
-</span><span class="partner-logo-item" title="Outliner">
-  <svg class="partner-svg" viewBox="0 0 130 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect x="1" y="5" width="22" height="22" rx="5" stroke="url(#olg_12)" stroke-width="2" fill="none"/>
-    <path d="M7 16h10M12 11v10" stroke="url(#olg_12)" stroke-width="2" stroke-linecap="round"/>
-    <text x="30" y="21" fill="currentColor" font-family="Inter,system-ui,sans-serif" font-size="15" font-weight="600" letter-spacing="-0.01em">Outliner</text>
-    <defs><linearGradient id="olg_12" x1="1" y1="5" x2="23" y2="27"><stop stop-color="#00D4C8"/><stop offset="1" stop-color="#5EEAD4"/></linearGradient></defs>
-  </svg>
-</span>
+
+          <span class="partner-logo-item">Micro1</span>
+          <span class="partner-logo-item">MECOR</span>
+          <span class="partner-logo-item">Outliner</span>
+
+          <span class="partner-logo-item">Micro1</span>
+          <span class="partner-logo-item">MECOR</span>
+          <span class="partner-logo-item">Outliner</span>
+
         </div>
+
       </div>
+
     </div>
+
   </section>
 
-  <!-- Core features -->
+  <!-- CORE FEATURES -->
   <section class="section" id="projects">
+
     <div class="container">
+
       <div class="section-header reveal">
-        <span class="section-eyebrow">Why Cool Media Remote Workspace</span>
+
+        <span class="section-eyebrow">
+          Why Cool Media Remote Workspace
+        </span>
+
         <h2>Built for advertising teams & freelancers</h2>
-        <p>We are not a pure freelance marketplace. We are an advertising company that opens high-value work to verified partners through Micro1 and our network.</p>
+
+        <p>
+          We are not a pure freelance marketplace. We are an advertising company
+          that opens high-value work to verified partners through Micro1 and our network.
+        </p>
+
       </div>
 
       <div class="features-grid stagger">
+
         <div class="feature-card">
           <div class="feature-icon">💳</div>
           <h3>Membership Badge</h3>
-          <p>USD 206 covers your membership badge, one-on-one tutor, premium tools, weekly Zoom meetings, and workflow training across platforms.</p>
+          <p>
+            USD 206 covers your membership badge, one-on-one tutor, premium tools,
+            weekly Zoom meetings, and workflow training across platforms.
+          </p>
         </div>
+
         <div class="feature-card">
           <div class="feature-icon">⚡</div>
           <h3>Available Projects</h3>
-          <p>See live creative, media, and campaign tasks from Cool Media clients the moment they open.</p>
+          <p>
+            See live creative, media, and campaign tasks from Cool Media clients
+            the moment they open.
+          </p>
         </div>
+
         <div class="feature-card">
           <div class="feature-icon">🔄</div>
           <h3>Pending & Completed</h3>
-          <p>Track every stage of your work. Clear status, deadlines, and payout visibility.</p>
+          <p>
+            Track every stage of your work. Clear status, deadlines, and payout visibility.
+          </p>
         </div>
+
         <div class="feature-card">
           <div class="feature-icon">🏦</div>
           <h3>Paid via Micro1</h3>
-          <p>You must sign up to Micro1. That is where you get paid. We also partner with Mecor & Outliner.</p>
+          <p>
+            You must sign up to Micro1. That is where you get paid.
+            We also partner with Mecor & Outliner.
+          </p>
         </div>
+
       </div>
+
     </div>
+
   </section>
 
-  <!-- How it works -->
-  <section class="section" id="how-it-works" style="background: linear-gradient(180deg, transparent, rgba(0,212,200,0.03), transparent);">
+  <!-- HOW IT WORKS -->
+  <section
+    class="section"
+    id="how-it-works"
+    style="background: linear-gradient(180deg, transparent, rgba(0,212,200,0.03), transparent);"
+  >
+
     <div class="container">
+
       <div class="section-header reveal">
+
         <span class="section-eyebrow">Simple path</span>
+
         <h2>From signup to first payout</h2>
-        <p>Four clear steps. No agency middlemen. Direct collaboration with an advertising company.</p>
+
+        <p>
+          Four clear steps. No agency middlemen.
+          Direct collaboration with an advertising company.
+        </p>
+
       </div>
 
       <div class="steps stagger">
+
         <div class="step">
           <div class="step-number">01</div>
           <h3>Join Micro1</h3>
-          <p>Create your Micro1 account. This is required — it is the platform we use to pay our partners.</p>
+          <p>
+            Create your Micro1 account. This is required —
+            it is the platform we use to pay our partners.
+          </p>
         </div>
+
         <div class="step">
           <div class="step-number">02</div>
           <h3>Enroll for USD 206</h3>
-          <p>Pay USD 206 once. Receive badge, dedicated tutor, premium tools access, and weekly Zoom meetings.</p>
+          <p>
+            Pay USD 206 once. Receive badge, dedicated tutor,
+            premium tools access, and weekly Zoom meetings.
+          </p>
         </div>
+
         <div class="step">
           <div class="step-number">03</div>
           <h3>Browse Projects</h3>
-          <p>Enter the dashboard. View Available, Pending, and Completed projects from real advertising campaigns.</p>
+          <p>
+            Enter the dashboard. View Available, Pending, and
+            Completed projects from real advertising campaigns.
+          </p>
         </div>
+
         <div class="step">
           <div class="step-number">04</div>
           <h3>Deliver & Get Paid</h3>
-          <p>Complete the work. Payouts are processed through Micro1 (and our partner network).</p>
+          <p>
+            Complete the work. Payouts are processed through
+            Micro1 and our partner network.
+          </p>
         </div>
+
       </div>
+
     </div>
+
   </section>
 
-  <!-- Membership highlight -->
+  <!-- MEMBERSHIP -->
   <section class="section membership-section" id="membership">
+
     <div class="container">
+
       <div class="section-header reveal">
+
         <span class="section-eyebrow">Verified Partner</span>
+
         <h2>Your Membership Card</h2>
-        <p>A digital badge of trust. Attached to your profile. Required to access projects.</p>
+
+        <p>
+          A digital badge of trust. Attached to your profile.
+          Required to access projects.
+        </p>
+
       </div>
 
       <div class="reveal">
+
         <div class="membership-card-preview">
+
           <div class="card-content">
+
             <div class="card-header">
-              <div class="card-brand">Cool Media Remote Workspace</div>
+
+              <div class="card-brand">
+                Cool Media Remote Workspace
+              </div>
+
               <div class="card-badge">VERIFIED</div>
+
             </div>
+
             <div class="card-chip"></div>
-            <div class="card-number">LM • 4829 • 7731 • 0094</div>
+
+            <div class="card-number">
+              LM • 4829 • 7731 • 0094
+            </div>
+
             <div class="card-footer">
+
               <div>
                 <div class="card-name">Alex Rivera</div>
                 <div class="card-valid">Member since 2025</div>
               </div>
+
               <div style="text-align:right;">
-                <div style="font-size:0.7rem;color:var(--text-muted);">PAYOUT VIA</div>
-                <div style="font-weight:600;color:var(--accent-teal);">Micro1</div>
+
+                <div style="font-size:0.7rem;color:var(--text-muted);">
+                  PAYOUT VIA
+                </div>
+
+                <div style="font-weight:600;color:var(--accent-teal);">
+                  Micro1
+                </div>
+
               </div>
+
             </div>
+
           </div>
+
         </div>
 
         <div class="membership-price">
-          <div class="price">USD 206 <span>one-time</span></div>
-          <p>Badge · Tutor · Premium tools · Weekly Zoom · Workflow training</p>
-          <a href="membership.html" class="btn btn-primary btn-lg">Get Your Membership Card</a>
+
+          <div class="price">
+            USD 206 <span>one-time</span>
+          </div>
+
+          <p>
+            Badge · Tutor · Premium tools · Weekly Zoom · Workflow training
+          </p>
+
+          <a href="membership.html" class="btn btn-primary btn-lg">
+            Get Your Membership Card
+          </a>
+
         </div>
+
       </div>
+
     </div>
+
   </section>
 
-  <!-- Partners -->
+  <!-- PARTNERS -->
   <section class="section" id="partners">
+
     <div class="container">
+
       <div class="section-header reveal">
+
         <span class="section-eyebrow">Ecosystem</span>
+
         <h2>We collaborate. You get paid.</h2>
-        <p>Cool Media is an advertising company. We partner with freelance platforms so talent can work on our campaigns and receive payment through trusted channels.</p>
+
+        <p>
+          Cool Media is an advertising company. We partner with freelance platforms
+          so talent can work on our campaigns and receive payment through trusted channels.
+        </p>
+
       </div>
 
       <div class="features-grid stagger" style="grid-template-columns: repeat(3, 1fr);">
+
         <div class="feature-card">
+
           <div class="partner-card-logo micro1-logo">
-            <svg viewBox="0 0 40 40" width="48" height="48"><rect width="40" height="40" rx="10" fill="url(#pm1)"/><text x="20" y="26" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Inter,sans-serif">m1</text><defs><linearGradient id="pm1" x1="0" y1="0" x2="40" y2="40"><stop stop-color="#3444DA"/><stop offset="1" stop-color="#6B7CFF"/></linearGradient></defs></svg>
+            <h2>m1</h2>
           </div>
+
           <h3>Micro1</h3>
-          <p>Primary payout partner. Every freelancer on Cool Media Remote Workspace must sign up to Micro1 — that is where payments are issued.</p>
+
+          <p>
+            Primary payout partner. Every freelancer on Cool Media Remote Workspace
+            must sign up to Micro1 — that is where payments are issued.
+          </p>
+
         </div>
+
         <div class="feature-card">
+
           <div class="partner-card-logo mecor-logo">
-            <svg viewBox="0 0 40 40" width="48" height="48"><rect width="40" height="40" rx="10" fill="url(#pmc)"/><path d="M10 30V10h5l5.5 13L26 10h5v20h-4.5V16L22 30h-3L14.5 16V30H10z" fill="#fff"/><defs><linearGradient id="pmc" x1="0" y1="0" x2="40" y2="40"><stop stop-color="#4F46E5"/><stop offset="1" stop-color="#A78BFA"/></linearGradient></defs></svg>
+            <h2>M</h2>
           </div>
+
           <h3>Mecor</h3>
-          <p>Strategic collaboration partner for specialized creative and production talent pools.</p>
+
+          <p>
+            Strategic collaboration partner for specialized creative
+            and production talent pools.
+          </p>
+
         </div>
+
         <div class="feature-card">
+
           <div class="partner-card-logo outliner-logo">
-            <svg viewBox="0 0 40 40" width="48" height="48"><rect width="40" height="40" rx="10" fill="url(#pol)"/><rect x="10" y="10" width="20" height="20" rx="4" stroke="#fff" stroke-width="2" fill="none"/><path d="M15 20h10M20 15v10" stroke="#fff" stroke-width="2" stroke-linecap="round"/><defs><linearGradient id="pol" x1="0" y1="0" x2="40" y2="40"><stop stop-color="#0D9488"/><stop offset="1" stop-color="#00D4C8"/></linearGradient></defs></svg>
+            <h2>+</h2>
           </div>
+
           <h3>Outliner</h3>
-          <p>Supporting partner for project coordination and extended freelance network access.</p>
+
+          <p>
+            Supporting partner for project coordination and extended
+            freelance network access.
+          </p>
+
         </div>
+
       </div>
+
     </div>
+
   </section>
 
-  <!-- Final CTA -->
+  <!-- FINAL CTA -->
   <section class="section" style="padding-bottom:120px;">
+
     <div class="container" style="text-align:center;">
+
       <div class="reveal">
+
         <h2 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,2.8rem);margin-bottom:16px;">
           Ready to work with an advertising company?
         </h2>
+
         <p style="color:var(--text-secondary);max-width:520px;margin:0 auto 32px;font-size:1.1rem;">
-          Create your Micro1 account, enroll for the USD 206 membership badge, and start viewing real projects today.
+          Create your Micro1 account, enroll for the USD 206 membership badge,
+          and start viewing real projects today.
         </p>
+
         <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-          <a href="signup.html" class="btn btn-primary btn-lg">Join Now</a>
-          <a href="dashboard.html" class="btn btn-outline btn-lg">Preview Dashboard</a>
+
+          <a href="signup.html" class="btn btn-primary btn-lg">
+            Join Now
+          </a>
+
+          <a href="dashboard.html" class="btn btn-outline btn-lg">
+            Preview Dashboard
+          </a>
+
         </div>
+
       </div>
+
     </div>
+
   </section>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer class="footer">
+
     <div class="container">
+
       <div class="footer-grid">
+
         <div class="footer-brand">
+
           <a href="index.html" class="logo">
-            <span class="brand">Cool Media</span>
-            <span class="suffix">Remote Workspace</span>
+            <img
+              src="assets/logo-header.png"
+              alt="Cool Media Remote Workspace"
+              class="logo-img logo-img-footer"
+            />
           </a>
-          <p>An advertising company expanding through trusted freelance partnerships. We create campaigns. You deliver talent. Payments via Micro1.</p>
+
+          <p>
+            An advertising company expanding through trusted freelance partnerships.
+            We create campaigns. You deliver talent. Payments via Micro1.
+          </p>
+
         </div>
+
         <div>
+
           <h4>Platform</h4>
+
           <ul>
             <li><a href="#how-it-works">How it works</a></li>
             <li><a href="membership.html">Membership</a></li>
             <li><a href="dashboard.html">Dashboard</a></li>
             <li><a href="signup.html">Sign up</a></li>
           </ul>
+
         </div>
+
         <div>
+
           <h4>Partners</h4>
+
           <ul>
             <li><a href="#">Micro1</a></li>
             <li><a href="#">Mecor</a></li>
             <li><a href="#">Outliner</a></li>
           </ul>
+
         </div>
+
         <div>
+
           <h4>Company</h4>
+
           <ul>
             <li><a href="#">About</a></li>
             <li><a href="#">Contact</a></li>
             <li><a href="#">Privacy</a></li>
             <li><a href="#">Terms</a></li>
           </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>© 2025 Cool Media Remote Workspace. All rights reserved.</span>
-        <span>Built for advertising × freelance collaboration</span>
-      </div>
-    </div>
-  </footer>
-<script src="js/main.js"></script>
 
-  <!-- Smartsupp Live Chat -->
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+
+        <span>
+          © 2025 Cool Media Remote Workspace. All rights reserved.
+        </span>
+
+        <span>
+          Built for advertising × freelance collaboration
+        </span>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+  <!-- EXISTING JAVASCRIPT -->
+  <script src="js/main.js"></script>
+
+  <!-- SMARTSUPP LIVE CHAT -->
   <script type="text/javascript">
-  var _smartsupp = _smartsupp || {};
-  _smartsupp.key = '1f700be20e1bc02c7752f7565e0a8723b743918b';
-  window.smartsupp||(function(d) {
-    var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
-    s=d.getElementsByTagName('script')[0];c=d.createElement('script');
-    c.type='text/javascript';c.charset='utf-8';c.async=true;
-    c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
-  })(document);
+    var _smartsupp = _smartsupp || {};
+    _smartsupp.key = '1f700be20e1bc02c7752f7565e0a8723b743918b';
+    window.smartsupp || (function (d) {
+      var s, c, o = smartsupp = function () { o._.push(arguments); };
+      o._ = [];
+      s = d.getElementsByTagName('script')[0];
+      c = d.createElement('script');
+      c.type = 'text/javascript';
+      c.charset = 'utf-8';
+      c.async = true;
+      c.src = 'https://www.smartsuppchat.com/loader.js?';
+      s.parentNode.insertBefore(c, s);
+    })(document);
   </script>
-  <noscript>Powered by <a href="https://www.smartsupp.com" target="_blank" rel="noopener">Smartsupp</a></noscript>
+  <noscript>
+    Powered by
+    <a href="https://www.smartsupp.com" target="_blank" rel="noopener">Smartsupp</a>
+  </noscript>
 
 </body>
 </html>

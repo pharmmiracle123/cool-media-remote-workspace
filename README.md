@@ -51,3 +51,9 @@ HTML / CSS / Vanilla JS · Google Fonts · Canvas particles · Ambient orbs · S
 ---
 
 © 2025 Cool Media Remote Workspace
+
+## Dropdown menu (fixed)
+
+- A single handler in `js/main.js` controls the dropdown on every page (open/close on tap, closes on link tap, outside tap, or Esc).
+- The duplicate handler in `index.html` was removed (two handlers cancelled each other out, so the menu never opened).
+- The broken chat-script tail of `index.html` was repaired.

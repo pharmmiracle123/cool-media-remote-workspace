@@ -104,15 +104,50 @@
     onScroll();
   }
 
-  // ---------- Mobile nav toggle ----------
+  // ---------- Dropdown / mobile nav ----------
   function initMobileNav() {
     const toggle = document.querySelector('.nav-toggle');
     const links = document.querySelector('.nav-links');
     if (!toggle || !links) return;
+    if (toggle.dataset.navBound === '1') return; // never bind twice
+    toggle.dataset.navBound = '1';
 
-    toggle.addEventListener('click', () => {
-      links.classList.toggle('open');
-      toggle.classList.toggle('active');
+    toggle.setAttribute('type', 'button');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-haspopup', 'true');
+
+    function setOpen(open) {
+      links.classList.toggle('open', open);
+      toggle.classList.toggle('active', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    }
+
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setOpen(!links.classList.contains('open'));
+    });
+
+    // Close when a link is chosen
+    links.addEventListener('click', (e) => {
+      if (e.target.closest('a')) setOpen(false);
+    });
+
+    // Close on outside click / tap
+    document.addEventListener('click', (e) => {
+      if (!links.contains(e.target) && !toggle.contains(e.target)) setOpen(false);
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && links.classList.contains('open')) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    // Reset when resizing up to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 900) setOpen(false);
     });
   }
 
