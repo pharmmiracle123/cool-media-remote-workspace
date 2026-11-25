@@ -31,7 +31,7 @@ Modern animated frontend inspired by cool.co aesthetics — for an advertising c
 ## Customer Care Chat
 
 **Smartsupp** live chat is installed site-wide with key  
-`9b1950efa201891f8fa562d1e968ddcc2f2cd982`.
+`1f700be20e1bc02c7752f7565e0a8723b743918b`.
 
 The floating Smartsupp widget appears bottom-right on every page.  
 On the Membership page, “Open Customer Care Chat” calls `smartsupp('chat:open')`.
