@@ -12,173 +12,24 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@300;400;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      corePlugins: { preflight: false }, // keep the existing site styles untouched
+      theme: { extend: { fontFamily: {
+        mont: ['Montserrat', 'Inter', 'sans-serif'],
+        inter: ['Inter', 'system-ui', 'sans-serif']
+      } } }
+    };
+  </script>
 
   <style>
-    /* FULL WIDTH HEADER IMAGE */
-    .brand-banner {
-      position: relative;
-      width: 100%;
-      padding: 0;
-      margin: 0;
-      overflow: visible;
-      background: #080608;
-      line-height: 0;
-      z-index: 100;
-    }
-
-    .brand-banner > img {
-      display: block;
-      width: 100%;
-      height: auto;
-      min-height: 120px;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    /* DROPDOWN ICON ON TOP OF IMAGE */
-    .navbar {
-      position: absolute !important;
-      top: 0;
-      right: 0;
-      width: 100%;
-      height: 100%;
-      background: transparent !important;
-      border: none !important;
-      backdrop-filter: none !important;
-      z-index: 200;
-      pointer-events: none;
-    }
-
-    .nav-inner {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      justify-content: flex-end;
-      align-items: flex-start;
-      padding: 15px 20px;
-      pointer-events: none;
-    }
-
-    .navbar .logo {
-      display: none !important;
-    }
-
-    /* Always show dropdown icon */
-    .nav-toggle {
-      display: flex !important;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 5px;
-      width: 46px;
-      height: 46px;
-      padding: 10px;
-      background: rgba(0, 0, 0, 0.65);
-      border: 1px solid rgba(255,255,255,0.4);
-      border-radius: 10px;
-      cursor: pointer;
-      pointer-events: auto;
-      position: relative;
-      z-index: 300;
-      backdrop-filter: blur(10px);
-    }
-
-    .nav-toggle span {
-      display: block;
-      width: 23px;
-      height: 2px;
-      background: #ffffff !important;
-      border-radius: 5px;
-    }
-
-    /* DROPDOWN MENU */
-    .nav-links {
-      display: none !important;
-      position: absolute;
-      top: 65px;
-      right: 20px;
-      width: 230px;
-      flex-direction: column;
-      align-items: stretch;
-      gap: 0;
-      padding: 12px;
-      background: rgba(12, 10, 12, 0.97);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 14px;
-      box-shadow: 0 12px 35px rgba(0,0,0,0.5);
-      backdrop-filter: blur(18px);
-      pointer-events: auto;
-      z-index: 250;
-      line-height: normal;
-    }
-
-    .nav-links.open {
-      display: flex !important;
-      position: absolute;
-      top: 65px;
-      right: 20px;
-      left: auto;
-      width: 230px;
-      padding: 12px;
-      gap: 0;
-    }
-
-    .nav-links a {
-      display: block;
-      width: 100%;
-      padding: 13px 12px;
-      color: #ffffff !important;
-      font-size: 14px;
-      border-radius: 7px;
-    }
-
-    .nav-links a:hover {
-      background: rgba(255,255,255,0.1);
-    }
-
-    .nav-links a::after {
-      display: none;
-    }
-
-    .nav-links .btn {
-      justify-content: center;
-      margin-top: 5px;
-    }
-
     /* REMOVE OLD TOP BAR */
     .top-bar {
       display: none !important;
-    }
-
-    /* MOBILE IMAGE */
-    @media (max-width: 768px) {
-      .brand-banner > img {
-        width: 100%;
-        height: auto;
-        min-height: 0;
-      }
-
-      .nav-inner {
-        padding: 10px 12px;
-      }
-
-      .nav-toggle {
-        width: 40px;
-        height: 40px;
-      }
-
-      .nav-links,
-      .nav-links.open {
-        top: 55px;
-        right: 12px;
-        width: min(230px, calc(100vw - 24px));
-      }
     }
 
     html {
@@ -195,14 +46,24 @@
   <div class="orb orb-2"></div>
   <div class="orb orb-3"></div>
 
-  <!-- FULL WIDTH BRAND IMAGE WITH DROPDOWN -->
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announce">
+    <span>Advertising × Freelance Collaboration</span>
+    <a href="https://www.talent.micro1.ai/register" target="_blank" rel="noopener">Join Micro1 <span aria-hidden="true">→</span></a>
+  </div>
+
+  <div class="cool-shell">
+
   <header class="brand-banner">
 
-    <img
-      src="assets/logo-header.png"
-      alt="Cool Media Remote Workspace"
-    />
-
+    <div class="w-full max-w-[350px] [container-type:inline-size]">
+      <div class="relative w-full aspect-[1020/308]" role="img" aria-label="Cool Media Remote Workspace">
+        <span class="absolute left-[6.2%] top-[29.9%] font-mont font-normal leading-none tracking-[-0.005em] text-white text-[length:9.45cqw]">COOL</span>
+        <span class="absolute left-[35.3%] top-[35.8%] font-mont font-semibold leading-none tracking-[0.25em] text-[length:5.55cqw] text-transparent bg-clip-text bg-gradient-to-r from-[#ff8260] to-[#ffc547]">MEDIA</span>
+        <span class="absolute left-[63.5%] top-[39.4%] font-inter font-normal leading-none text-[length:3.46cqw] text-[#ffd6e4] whitespace-nowrap">Remote Workspace</span>
+        <span class="absolute left-[6.67%] top-[57.9%] h-[1.9%] w-[54%] rounded-full bg-gradient-to-r from-[#ff4191] via-[#ff796b] to-[#ffc546]"></span>
+      </div>
+    </div>
     <nav class="navbar">
 
       <div class="nav-inner">
@@ -250,6 +111,12 @@
     <div class="container">
 
       <div class="hero-content">
+
+        <div class="cool-stack" aria-label="Collaborate. Create. Earn.">
+          <span>Collaborate</span><i></i>
+          <span>Create</span><i></i>
+          <span>Earn</span>
+        </div>
 
         <div class="hero-eyebrow">
           <span class="dot"></span>
@@ -308,6 +175,8 @@
     </div>
 
   </section>
+
+  </div><!-- /cool-shell -->
 
   <!-- TRUSTED PARTNERS -->
   <section class="trusted">
@@ -665,16 +534,7 @@
       <div class="footer-grid">
 
         <div class="footer-brand">
-
-          <a href="index.html" class="logo">
-            <img
-              src="assets/logo-header.png"
-              alt="Cool Media Remote Workspace"
-              class="logo-img logo-img-footer"
-            />
-          </a>
-
-          <p>
+<p>
             An advertising company expanding through trusted freelance partnerships.
             We create campaigns. You deliver talent. Payments via Micro1.
           </p>
