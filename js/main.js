@@ -32,8 +32,9 @@
         this.size = Math.random() * 1.8 + 0.4;
         this.speedY = Math.random() * 0.35 + 0.08;
         this.speedX = (Math.random() - 0.5) * 0.25;
-        this.opacity = Math.random() * 0.5 + 0.15;
-        this.fade = Math.random() * 0.004 + 0.001;
+        this.opacity = Math.random() * 0.55 + 0.2;
+        this.fade = Math.random() * 0.003 + 0.0008;
+        this.hue = Math.random() > 0.7 ? (Math.random() > 0.5 ? '255,107,44' : '0,212,200') : '255,255,255';
       }
 
       update() {
@@ -50,13 +51,13 @@
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+        ctx.fillStyle = `rgba(${this.hue || '255,255,255'}, ${this.opacity})`;
         ctx.fill();
       }
     }
 
     function createParticles() {
-      const count = Math.min(Math.floor((width * height) / 18000), 90);
+      const count = Math.min(Math.floor((width * height) / 14000), 120);
       particles = [];
       for (let i = 0; i < count; i++) {
         particles.push(new Particle());
@@ -103,15 +104,50 @@
     onScroll();
   }
 
-  // ---------- Mobile nav toggle ----------
+  // ---------- Dropdown / mobile nav ----------
   function initMobileNav() {
     const toggle = document.querySelector('.nav-toggle');
     const links = document.querySelector('.nav-links');
     if (!toggle || !links) return;
+    if (toggle.dataset.navBound === '1') return; // never bind twice
+    toggle.dataset.navBound = '1';
 
-    toggle.addEventListener('click', () => {
-      links.classList.toggle('open');
-      toggle.classList.toggle('active');
+    toggle.setAttribute('type', 'button');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-haspopup', 'true');
+
+    function setOpen(open) {
+      links.classList.toggle('open', open);
+      toggle.classList.toggle('active', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    }
+
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setOpen(!links.classList.contains('open'));
+    });
+
+    // Close when a link is chosen
+    links.addEventListener('click', (e) => {
+      if (e.target.closest('a')) setOpen(false);
+    });
+
+    // Close on outside click / tap
+    document.addEventListener('click', (e) => {
+      if (!links.contains(e.target) && !toggle.contains(e.target)) setOpen(false);
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && links.classList.contains('open')) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    // Reset when resizing up to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 900) setOpen(false);
     });
   }
 
