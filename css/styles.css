@@ -51,7 +51,7 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 html { background: #07191d; }
@@ -436,7 +436,7 @@ ul { list-style: none; }
 }
 
 .hero-sub {
-  font-size: 1.0rem;
+  font-size: 1.2rem;
   color: var(--text-secondary);
   max-width: 620px;
   margin: 0 auto 40px;
@@ -1196,14 +1196,14 @@ ul { list-style: none; }
 
 .footer-brand p {
   color: var(--text-secondary);
-  font-size: 1.05rem;          /* was 0.95rem */
+  font-size: 1.05rem;
   line-height: 1.65;
   margin-top: 16px;
   max-width: 320px;
 }
 
 .footer h4 {
-  font-size: 1rem;             /* was 0.9rem */
+  font-size: 1rem;
   font-weight: 600;
   margin-bottom: 20px;
   color: var(--text-primary);
@@ -1216,7 +1216,7 @@ ul { list-style: none; }
 
 .footer ul a {
   color: var(--text-secondary);
-  font-size: 1rem;             /* was 0.9rem */
+  font-size: 1rem;
   transition: color 0.2s;
 }
 
@@ -1230,58 +1230,12 @@ ul { list-style: none; }
   align-items: center;
   padding-top: 32px;
   border-top: 1px solid var(--border-subtle);
-  font-size: 0.95rem;          /* was 0.85rem */
+  font-size: 0.95rem;
   color: var(--text-muted);
   gap: 16px;
   flex-wrap: wrap;
 }
 
-/* ========== RESPONSIVE – FOOTER & CONTAINER ========== */
-@media (max-width: 1024px) {
-  .footer-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 768px) {
-  /* Give more breathing room from the screen edges */
-  .container {
-    width: min(1200px, 100%);
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  .footer {
-    padding: 48px 0 28px;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 36px;
-    margin-bottom: 36px;
-  }
-
-  .footer-brand p {
-    font-size: 1.05rem;
-    max-width: 100%;
-  }
-
-  .footer h4 {
-    font-size: 1.05rem;
-    margin-bottom: 16px;
-  }
-
-  .footer ul a {
-    font-size: 1.05rem;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 0.95rem;
-  }
-}
 /* ========== ANIMATIONS ========== */
 @keyframes fadeUp {
   from {
@@ -1360,12 +1314,43 @@ ul { list-style: none; }
 }
 
 @media (max-width: 768px) {
+  .container {
+    width: min(1200px, 100%);
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
   .hero-stats { flex-direction: column; gap: 24px; }
   .features-grid { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 36px; }
   .main-content { padding: 24px 16px; }
   .projects-grid { grid-template-columns: 1fr; }
+
+  .footer {
+    padding: 48px 0 28px;
+  }
+
+  .footer-brand p {
+    font-size: 1.05rem;
+    max-width: 100%;
+  }
+
+  .footer h4 {
+    font-size: 1.05rem;
+    margin-bottom: 16px;
+  }
+
+  .footer ul a {
+    font-size: 1.05rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.95rem;
+  }
 }
 
 /* Mobile menu open state */
@@ -2084,7 +2069,7 @@ ul { list-style: none; }
   border: 0;
   border-radius: 0;
   backdrop-filter: none;
-  font: 500 clamp(1.4rem, 6.6vw, 2.6rem)/1.15 'Montserrat', 'Inter', sans-serif;
+  font: 700 clamp(1.4rem, 6.6vw, 2.6rem)/1.15 'Montserrat', 'Inter', sans-serif;
   letter-spacing: -.02em;
   background: linear-gradient(90deg, #f0532b 0%, #f5a524 38%, #7aa07a 70%, #19a8a0 100%);
   -webkit-background-clip: text;
@@ -2122,55 +2107,104 @@ ul { list-style: none; }
 .brand-banner .nav-toggle span { width: 20px; height: 2px; }
 .brand-banner .nav-links,
 .brand-banner .nav-links.open { top: 56px; right: 12px; }
-/* ============================================
-   Better readability & spacing overrides
-   ============================================ */
 
-/* 1. Make base text larger */
-html {
-  font-size: 17.5px;          /* was 16px – feels more comfortable */
+/* ========== NEW PARTNERS LIST ========== */
+.partners-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 48px;
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* 2. More space from the left & right edges */
-.container {
-  width: min(1200px, 90%);    /* was 92% */
-  padding-left: 20px;
-  padding-right: 20px;
+.partner-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+  background: rgba(14, 44, 50, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  padding: 26px 24px;
+  transition: all 0.35s var(--ease-out);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
 }
 
-/* Extra breathing room on mobile */
-@media (max-width: 768px) {
-  .container {
-    width: 100%;
-    padding-left: 22px;
-    padding-right: 22px;
-  }
+.partner-box:hover {
+  border-color: rgba(255, 107, 44, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(255, 107, 44, 0.12);
 }
 
-/* 3. Make body text and common text slightly larger & more readable */
-body {
-  font-size: 1.05rem;
-  line-height: 1.7;
+.partner-logo-box {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #fff;
 }
 
-.hero-sub {
+.partner-logo-box.micro1-logo {
+  background: rgba(255, 107, 44, 0.22);
+  color: var(--accent-orange);
+  border: 1px solid rgba(255, 107, 44, 0.35);
+}
+
+.partner-logo-box.mecor-logo {
+  background: rgba(0, 212, 200, 0.18);
+  color: var(--accent-teal);
+  border: 1px solid rgba(0, 212, 200, 0.3);
+}
+
+.partner-logo-box.outliner-logo {
+  background: rgba(167, 139, 250, 0.18);
+  color: var(--accent-purple);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+}
+
+.partner-content h3 {
   font-size: 1.25rem;
-  line-height: 1.65;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-primary);
 }
 
-.feature-card p,
-.section p,
-.card-body,
-.membership-card p,
-.pricing-card p {
+.partner-content p {
   font-size: 1rem;
-  line-height: 1.7;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0;
 }
 
-/* Slightly larger secondary text */
-.stat-label,
-.top-bar,
-.nav-link,
-.btn-sm {
-  font-size: 0.95rem;
+/* Mobile adjustments for partner boxes */
+@media (max-width: 600px) {
+  .partner-box {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 22px 20px;
+  }
+
+  .partner-logo-box {
+    width: 54px;
+    height: 54px;
+    font-size: 1.3rem;
+  }
+
+  .partner-content h3 {
+    font-size: 1.2rem;
+  }
+
+  .partner-content p {
+    font-size: 1.02rem;
+  }
 }
