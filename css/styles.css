@@ -51,13 +51,12 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 16px; /* standard base */
+  font-size: 13px;
 }
 
 html { background: #07191d; }
 body {
   font-family: var(--font-sans);
-  font-size: 15px; /* slightly smaller body for comfortable reading */
   background: linear-gradient(180deg, #0a2a31 0%, #0e3a3f 10%, #10302f 28%, #0b1e22 55%, #14100e 82%, #0a1417 100%);
   min-height: 100vh;
   color: var(--text-primary);
@@ -437,7 +436,7 @@ ul { list-style: none; }
 }
 
 .hero-sub {
-  font-size: 1.05rem;
+  font-size: 1.0rem;
   color: var(--text-secondary);
   max-width: 620px;
   margin: 0 auto 40px;
@@ -634,7 +633,7 @@ ul { list-style: none; }
 
 .section-header p {
   color: var(--text-secondary);
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 .steps {
@@ -1294,7 +1293,7 @@ ul { list-style: none; }
   transform: translateY(0);
 }
 
-/* ========== RESPONSIVE (standard breakpoints) ========== */
+/* ========== RESPONSIVE ========== */
 @media (max-width: 1024px) {
   .features-grid { grid-template-columns: repeat(2, 1fr); }
   .steps { grid-template-columns: repeat(2, 1fr); }
@@ -1308,8 +1307,6 @@ ul { list-style: none; }
     border-right: none;
     border-bottom: 1px solid var(--border-subtle);
   }
-  .section { padding: 80px 0; }
-  .hero { padding: 100px 0 60px; }
 }
 
 @media (max-width: 768px) {
@@ -1319,23 +1316,6 @@ ul { list-style: none; }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   .main-content { padding: 24px 16px; }
   .projects-grid { grid-template-columns: 1fr; }
-
-  /* tighter, standard mobile spacing */
-  .section { padding: 56px 0; }
-  .hero { padding: 72px 0 48px; }
-  .cool-shell .hero { padding: 28px 0 48px; }
-  .section-header { margin-bottom: 40px; }
-  .hero-sub,
-  .cool-shell .hero-sub { font-size: 0.95rem; }
-  .section-header p { font-size: 0.95rem; }
-  .container { width: min(1200px, 94%); }
-}
-
-@media (max-width: 480px) {
-  .section { padding: 48px 0; }
-  .hero { padding: 56px 0 40px; }
-  .cool-shell .hero { padding: 24px 0 40px; }
-  body { font-size: 14.5px; }
 }
 
 /* Mobile menu open state */
@@ -2054,7 +2034,7 @@ ul { list-style: none; }
   border: 0;
   border-radius: 0;
   backdrop-filter: none;
-  font: 700 clamp(1.4rem, 6.6vw, 2.6rem)/1.15 'Montserrat', 'Inter', sans-serif;
+  font: 500 clamp(1.4rem, 6.6vw, 2.6rem)/1.15 'Montserrat', 'Inter', sans-serif;
   letter-spacing: -.02em;
   background: linear-gradient(90deg, #f0532b 0%, #f5a524 38%, #7aa07a 70%, #19a8a0 100%);
   -webkit-background-clip: text;
