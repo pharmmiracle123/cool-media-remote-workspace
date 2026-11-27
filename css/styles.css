@@ -1196,25 +1196,27 @@ ul { list-style: none; }
 
 .footer-brand p {
   color: var(--text-secondary);
-  font-size: 0.95rem;
+  font-size: 1.05rem;          /* was 0.95rem */
+  line-height: 1.65;
   margin-top: 16px;
-  max-width: 280px;
+  max-width: 320px;
 }
 
 .footer h4 {
-  font-size: 0.9rem;
+  font-size: 1rem;             /* was 0.9rem */
   font-weight: 600;
   margin-bottom: 20px;
   color: var(--text-primary);
+  letter-spacing: 0.02em;
 }
 
 .footer ul li {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .footer ul a {
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 1rem;             /* was 0.9rem */
   transition: color 0.2s;
 }
 
@@ -1228,10 +1230,58 @@ ul { list-style: none; }
   align-items: center;
   padding-top: 32px;
   border-top: 1px solid var(--border-subtle);
-  font-size: 0.85rem;
+  font-size: 0.95rem;          /* was 0.85rem */
   color: var(--text-muted);
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
+/* ========== RESPONSIVE – FOOTER & CONTAINER ========== */
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Give more breathing room from the screen edges */
+  .container {
+    width: min(1200px, 100%);
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .footer {
+    padding: 48px 0 28px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    margin-bottom: 36px;
+  }
+
+  .footer-brand p {
+    font-size: 1.05rem;
+    max-width: 100%;
+  }
+
+  .footer h4 {
+    font-size: 1.05rem;
+    margin-bottom: 16px;
+  }
+
+  .footer ul a {
+    font-size: 1.05rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.95rem;
+  }
+}
 /* ========== ANIMATIONS ========== */
 @keyframes fadeUp {
   from {
@@ -2072,3 +2122,55 @@ ul { list-style: none; }
 .brand-banner .nav-toggle span { width: 20px; height: 2px; }
 .brand-banner .nav-links,
 .brand-banner .nav-links.open { top: 56px; right: 12px; }
+/* ============================================
+   Better readability & spacing overrides
+   ============================================ */
+
+/* 1. Make base text larger */
+html {
+  font-size: 17.5px;          /* was 16px – feels more comfortable */
+}
+
+/* 2. More space from the left & right edges */
+.container {
+  width: min(1200px, 90%);    /* was 92% */
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* Extra breathing room on mobile */
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+}
+
+/* 3. Make body text and common text slightly larger & more readable */
+body {
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.hero-sub {
+  font-size: 1.25rem;
+  line-height: 1.65;
+}
+
+.feature-card p,
+.section p,
+.card-body,
+.membership-card p,
+.pricing-card p {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Slightly larger secondary text */
+.stat-label,
+.top-bar,
+.nav-link,
+.btn-sm {
+  font-size: 0.95rem;
+}
